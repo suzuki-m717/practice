@@ -7,12 +7,11 @@
 ・学籍番号　20120055
 
 //趣味<br>
-
 ・ゲーム<br>
-  ・Apex<br>
-  ・ポケモン<br>
-  ・ドラゴンクエスト<br>
-  ・バイオハザード<br>
+   ・Apex<br>
+   ・ポケモン<br>
+   ・ドラゴンクエスト<br>
+   ・バイオハザード<br>
 ### Markdown
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
