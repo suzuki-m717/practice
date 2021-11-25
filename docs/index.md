@@ -9,10 +9,10 @@
 //趣味<br>
 
 ・ゲーム<br>
-  ・Apex
-  ・ポケモン
-  ・ドラゴンクエスト
-  ・バイオハザード
+  ・Apex<br>
+  ・ポケモン<br>
+  ・ドラゴンクエスト<br>
+  ・バイオハザード<br>
 ### Markdown
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
