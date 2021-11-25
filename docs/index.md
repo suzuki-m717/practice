@@ -1,7 +1,7 @@
 ## suzuki-m717です。
 
-//概要
-・所属　開始専門職大学　情報学部
+//概要<br>
+・所属　開始専門職大学　情報学部<br>
  .学籍番号　20120055
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
