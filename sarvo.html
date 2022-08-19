@@ -1,0 +1,69 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://obniz.com/js/jquery-3.2.1.min.js"></script>
+  <script src="https://unpkg.com/obniz@3.x/obniz.js"></script>
+</head>
+
+<body>
+  <div id="obniz-debug"></div>
+  <div class="wrap px-5 py-4">
+    <h3 class="title mb-4">Connect From Your Browser</h3>
+    <!-- <h5>LED</h5> -->
+    <h5>Servo Motor</h5>
+    <div class="btnBox d-flex mb-4">
+      <div class="green_btn d-flex flex-column">
+        <!-- <button class="btn btn-success m-1" id="green_on">ON</button>
+                <button class="btn btn-success m-1" id="green_off">OFF</button> -->
+        <button class="btn btn-success m-1" id="green_on">0 deg</button>
+        <button class="btn btn-success m-1" id="green_off">90 deg</button>
+      </div>
+    </div>
+    <h5>TEXT</h5>
+    <div>
+      <!-- <input type="text" class="p-2" id="text" value="Hello World"> -->
+      <!-- <button class="btn btn-primary" id="showtime">Print on obniz</button> -->
+      <button class="btn btn-primary" id="showtime">Print degree on obniz</button>
+    </div>
+  </div>
+  <script>
+    var obniz = new Obniz("1859-2559");
+        const url = "https://script.google.com/macros/s/AKfycbzgplH4seReBo0C6Eh4DLv2FaB_EkLxNgbeBq4DPi3HHJYyLUA/exec";//GASのウェブアプリケーションのURLを指定してください
+        obniz.onconnect = async function () {
+            // var light = obniz.wired("Keyestudio_TrafficLight", { gnd: 0, green: 1, yellow: 2, red: 3 });
+            var servo = obniz.wired("ServoMotor", { gnd: 0, vcc: 1, signal: 2 });    //サーボーモーターのライブラリを指定
+            var angle = 0;    //まずは0度に
+            console.log(servo);
+            $('#green_on').click(function () {    //グリーンの「ON」のボタンが押されたら
+                // light.green.on();
+                angle = 0;    //角度を0度に
+                servo.angle(angle);    //サーボーモーターを(angle)度に回す
+                $.post( url, { angle } )
+            .done( function( data ){ console.dir( data ); } );
+            });
+            $('#green_off').click(function () {    //グリーンの「OFF」のボタンが押されたら
+                // light.green.off();
+                angle = 90;    //角度を90度に
+                servo.angle(angle);
+                $.post( url, { angle } )
+            .done( function( data ){ console.dir( data ); } );
+            });
+            obniz.switch.onchange = function (state) {
+                $('#print').text(state);
+                obniz.display.clear();
+                obniz.display.print(state);
+            }
+            $("#showtime").on("click", function () {
+                obniz.display.clear();
+                // obniz.display.print($("#text").val());
+                obniz.display.print(angle + " deg");
+            });
+           
+        }
+  </script>
+</body>
+
+</html>
